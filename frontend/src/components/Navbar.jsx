@@ -3,6 +3,8 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { CiUser } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { FaAirbnb } from "react-icons/fa";
+
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -39,7 +41,8 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center pt-4 px-4 sm:px-6 md:px-12 lg:px-20 relative">
-      <Link to="/" className="text-lg sm:text-xl font-bold">Airbnb Clone</Link>
+      <Link to="/" className="text-lg sm:text-xl font-bold flex justify-center items-center gap-1"><span className="text-rose-500 text-2xl
+      "><FaAirbnb /></span>Airbnb</Link>
 
       <div className="flex items-center gap-4 sm:gap-6">
         {/* Host your place button */}
