@@ -15,7 +15,7 @@ function Home() {
 
       <div className="px-4 sm:px-8 md:px-16 lg:px-20 my-6">
         {loading && <p className="text-center text-gray-500">Loading...</p>}
-        {error && <p className="text-red-500">{error}</p>}
+       
 
         {Array.isArray(properties) && properties.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
