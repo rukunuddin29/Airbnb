@@ -25,7 +25,7 @@ function Home() {
                   {/* Image Section */}
                   <div className="relative h-56 sm:h-60 overflow-hidden m-2.5 rounded-md">
                     <img
-                      src={property.images || "https://via.placeholder.com/300x200"}
+                      src={property.images?.[0] || "https://via.placeholder.com/300x200"}
                       alt={property.title}
                       className="w-full h-full object-cover"
                     />
@@ -54,7 +54,16 @@ function Home() {
             ))}
           </div>
         ) : (
-          <p className="text-center text-gray-500">No properties found.</p>
+          <div className="max-w-md mx-auto mt-10 p-4 border rounded-xl shadow-sm animate-pulse">
+  <div className="h-48 bg-gray-300 rounded-lg mb-4"></div>
+  <div className="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
+  <div className="h-4 bg-gray-300 rounded w-1/2 mb-4"></div>
+  <div className="flex gap-2">
+    <div className="h-8 w-20 bg-gray-300 rounded"></div>
+    <div className="h-8 w-20 bg-gray-300 rounded"></div>
+  </div>
+</div>
+
         )}
       </div>
 

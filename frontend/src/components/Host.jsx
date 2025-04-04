@@ -75,7 +75,7 @@ const Host = () => {
               {/* Image Section */}
               <div className="relative p-2.5 md:w-2/5 shrink-0 overflow-hidden">
                 <img
-                  src={property.imageUrl || "https://via.placeholder.com/300x200"}
+                  src={property.images?.[0] || "https://via.placeholder.com/300x200"}
                   alt={property.title}
                   className="h-full w-full rounded-md md:rounded-lg object-cover"
                 />
@@ -96,9 +96,10 @@ const Host = () => {
                     {property.location}
                   </p>
 
-                  <p className="text-slate-500 text-sm leading-relaxed mb-4">
-                    {property.description}
-                  </p>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-4 border-b border-dotted border-slate-300 pb-2">
+  {property.description?.split(" ").slice(0, 30).join(" ") + " ..."}
+</p>
+
 
                   <p className="text-lg font-bold text-teal-700">
                     ${property.price}
