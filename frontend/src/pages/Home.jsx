@@ -54,14 +54,22 @@ function Home() {
             ))}
           </div>
         ) : (
-          <div className="max-w-md mx-auto mt-10 p-4 rounded-xl animate-pulse">
-  <div className="h-64 bg-gray-300 rounded-lg mb-4"></div>
-  <div className="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
-  <div className="h-4 bg-gray-300 rounded w-1/2 mb-4"></div>
-  <div className="flex gap-2">
-    <div className="h-8 w-20 bg-gray-300 rounded"></div>
-    
-  </div>
+          <div className="flex flex-wrap justify-center border-gray-100 gap-6 mt-10">
+  {[1, 2, 3].map((_, index) => (
+    <div
+      key={index}
+      className="w-full sm:w-[300px] p-4 rounded-xl animate-pulse bg-white shadow"
+    >
+      <div className="h-64 bg-gray-300 rounded-lg mb-4"></div>
+      <div className="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
+      <div className="h-4 bg-gray-300 rounded w-1/2 mb-4"></div>
+      <div className="flex gap-2">
+        <div className="h-8 w-20 bg-gray-300 rounded"></div>
+      </div>
+    </div>
+  ))}
+
+
 </div>
 
         )}
