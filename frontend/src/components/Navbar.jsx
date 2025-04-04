@@ -12,14 +12,12 @@ const Navbar = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
-
       if (!token) return;
 
       try {
         const { data } = await axios.get("http://localhost:5000/get-user", {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         });
-
         setUser(data.user);
       } catch (error) {
         console.error("Failed to fetch user:", error);
@@ -40,39 +38,44 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between pt-4 px-20 items-center relative">
-      <Link to={'/'} className="text-xl font-bold">Airbnb Clone</Link>
+    <nav className="flex justify-between items-center pt-4 px-4 sm:px-6 md:px-12 lg:px-20 relative">
+      <Link to="/" className="text-lg sm:text-xl font-bold">Airbnb Clone</Link>
 
-      {/* <div className="text-[18px] space-x-4">
-        <Link to="/" className="hover:border px-4 p-1 rounded-3xl">Home</Link>
-        <Link to="/experience" className="hover:border px-4 p-1 rounded-3xl">Experience</Link>
-      </div> */}
-
-      <div className="flex items-center gap-6">
-        {/* Separate "Host your place" */}
-        <Link to={'/host'} className="px-4 py-2 hover:bg-gray-100 rounded-full border border-gray-300">
+      <div className="flex items-center gap-4 sm:gap-6">
+        {/* Host your place button */}
+        <Link
+          to="/host"
+          className="hidden sm:inline-block px-3 sm:px-4 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full border border-gray-300"
+        >
           Host your place
         </Link>
 
-        <div className="border border-gray-200 rounded-full flex items-center bg-white shadow-lg gap-4 p-2 cursor-pointer relative">
-          <RxHamburgerMenu className="text-gray-900 transition ease-in" onClick={toggleLogin} />
+        {/* Profile & Hamburger */}
+        <div className="border border-gray-200 rounded-full flex items-center bg-white shadow-lg gap-2 sm:gap-4 p-2 cursor-pointer relative">
+          <RxHamburgerMenu
+            className="text-gray-900 text-lg sm:text-xl transition ease-in"
+            onClick={toggleLogin}
+          />
 
           {user ? (
             <div className="flex items-center gap-2">
-              <span className="text-sm font-medium">{user.name}</span>
-              <Link to={'/profile'}><CiUser className=" rounded-full text-2xl bg-gray-200 p-1" /></Link>
+              <span className="text-sm font-medium hidden sm:inline">{user.name}</span>
+              <Link to="/profile">
+                <CiUser className="rounded-full text-xl sm:text-2xl bg-gray-200 p-1" />
+              </Link>
             </div>
           ) : (
-            <CiUser className="text-2xl" />
+            <CiUser className="text-xl sm:text-2xl" />
           )}
 
           {logg && (
-            <div className="absolute right-0 top-12 mt-2 w-40 bg-white border border-gray-300 shadow-lg rounded-lg z-10">
-              <div className="flex flex-col">
+            <div className="absolute right-0 top-12 mt-2 w-36 sm:w-40 bg-white border border-gray-300 shadow-lg rounded-lg z-10">
+              <div className="flex flex-col text-sm sm:text-base">
                 {user ? (
-                  <button 
-                    onClick={handleLogout} 
-                    className="px-4 py-2 hover:bg-gray-100 text-left">
+                  <button
+                    onClick={handleLogout}
+                    className="px-4 py-2 hover:bg-gray-100 text-left"
+                  >
                     Logout
                   </button>
                 ) : (
@@ -80,8 +83,10 @@ const Navbar = () => {
                     Login
                   </Link>
                 )}
-                <Link to="/register" className="px-4 py-2 hover:bg-gray-100">Register</Link>
-               </div>
+                <Link to="/register" className="px-4 py-2 hover:bg-gray-100">
+                  Register
+                </Link>
+              </div>
             </div>
           )}
         </div>
