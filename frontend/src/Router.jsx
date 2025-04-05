@@ -6,6 +6,7 @@ import HotelDetails from "./pages/HotelDetails";
 import Profile from "./pages/Profile";
 import HostPage from "./pages/HostPage";
 import AddForm from "./components/AddForm";
+
 import { UserProvider } from "./context/UserContext";
 
 

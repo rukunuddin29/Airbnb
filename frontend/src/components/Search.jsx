@@ -1,9 +1,32 @@
 import React from 'react';
 import { FaSearch } from "react-icons/fa";
 
+
+
+
 function Search() {
+  // const [search,setSearch]=(false);
+
+  // const toggle()=>{
+  //   setSearch(true)
+  // }
+ 
   return (
-    <div className="w-full flex items-center justify-center px-4 py-6">
+<>
+{/* <div className="flex justify-center items-center py-5 px-3 md:hidden" >
+  <div className="w-full max-w-2xl bg-white rounded-full shadow-md border border-gray-200 px-4 py-2 flex items-center gap-2">
+   
+    <input
+      type="text"
+      placeholder="⌕ Start your Search "
+      className="w-full text-center bg-transparent outline-none text-black placeholder:text-gray-500"
+    />
+  </div>
+</div> */}
+
+
+
+<div className="w-full flex items-center justify-center px-4 py-6">
 <div className="w-full max-w-4xl border border-gray-200 rounded-2xl lg:rounded-full flex flex-col sm:flex-row items-center bg-white shadow-lg p-2 gap-2 sm:gap-4">
 
         
@@ -52,7 +75,9 @@ function Search() {
         </button>
       </div>
     </div>
+    </>
   );
-}
+ 
+} 
 
 export default Search;

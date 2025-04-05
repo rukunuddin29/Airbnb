@@ -116,7 +116,7 @@ const HotelDetails = () => {
           {/* Right - Booking Card */}
           <div className="w-full lg:w-1/3 mt-6 lg:mt-0">
             <div className="sticky top-6">
-              <Booking />
+            <Booking propertyId={property._id} />
             </div>
           </div>
         </div>

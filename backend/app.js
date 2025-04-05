@@ -7,6 +7,7 @@ const authRoutes = require("./routes/auth");
 const homeRoutes = require("./routes/index");
 const propertyRoutes = require("./routes/property");
 const profileRoutes = require("./routes/profile");
+const bookingRoutes=require('./routes/booking')
 
 dotenv.config();  // ✅ Load environment variables
 
@@ -35,6 +36,7 @@ app.use("/", authRoutes);
 app.use("/", homeRoutes);
 app.use("/api/properties", propertyRoutes);  // Uncommented this
 app.use("/api/profile", profileRoutes);
+app.use("/api/bookings",bookingRoutes)
 
 const PORT = process.env.PORT || 5000;  // Use .env PORT or fallback to 5000
 app.listen(PORT, () => console.log(`🚀 Server is running on port ${PORT}`));

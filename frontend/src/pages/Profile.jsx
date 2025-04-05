@@ -4,6 +4,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import { RiContactsLine } from "react-icons/ri";
 import { MdOutlineEmail } from "react-icons/md";
+import BookingList from "../components/BookingList";
 
 function Profile() {
   const { subpage = "account" } = useParams();
@@ -65,7 +66,7 @@ function Profile() {
       </>
     );
   }
-  
+
 
   return (
     <>
@@ -117,7 +118,7 @@ function Profile() {
 
         {subpage === "booking" && (
           <div className="min-h-[60vh] flex items-center justify-center">
-            <h1 className="text-2xl font-semibold text-gray-800">This is your booking section</h1>
+            <BookingList/>
           </div>
         )}
       </div>
