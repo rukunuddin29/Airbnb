@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 import Footer from "../components/Footer";
 import { CiHeart } from "react-icons/ci";
+import Category from "../components/Category";
 
 
 function Home() {
@@ -14,6 +15,7 @@ function Home() {
     <>
       <Navbar />
       <Search />
+      <Category/>
 
       <div className="px-4 sm:px-8 md:px-16 lg:px-20 my-6">
         {loading && <p className="text-center text-gray-500">Loading...</p>}
@@ -24,7 +26,7 @@ function Home() {
               <Link to={`/property/${property._id}`} key={property._id}>
                 <div className="relative flex flex-col h-full  rounded-lg transition duration-300">
                   {/* Image Section */}
-                  <div className="relative overflow-hidden rounded-md h-[300px] sm:h-[250px] md:h-[280px] lg:h-[300px]">
+                  <div className="relative overflow-hidden rounded-xl h-[300px] sm:h-[250px] md:h-[280px] lg:h-[300px]">
                     {/* Heart Button */}
                     {/* <button className="absolute top-3 right-3 z-10 bg-white/80 p-2 rounded-full shadow hover:bg-white">
                     <CiHeart />
