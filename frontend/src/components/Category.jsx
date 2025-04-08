@@ -5,7 +5,8 @@ import { LuMountainSnow } from "react-icons/lu";
 import { GiCampingTent } from "react-icons/gi";
 import { MdOutlineForest, MdOutlineCabin } from "react-icons/md";
 import { IoBoatOutline, IoFilterOutline } from "react-icons/io5";
-import '../app.css'
+import '../index.css';
+
 
 function Category() {
   const [isTaxIncluded, setIsTaxIncluded] = useState(false);
