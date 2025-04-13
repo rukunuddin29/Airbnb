@@ -4,9 +4,7 @@ import Search from "../components/Search";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 import Footer from "../components/Footer";
-import { CiHeart } from "react-icons/ci";
 import Category from "../components/Category";
-
 
 function Home() {
   const { properties, error, loading } = useUserContext();
@@ -15,59 +13,54 @@ function Home() {
     <>
       <Navbar />
       <Search />
-      <Category/>
+      <Category />
 
       <div className="px-4 sm:px-8 md:px-16 lg:px-20 my-6">
         {loading && <p className="text-center text-gray-500">Loading...</p>}
 
         {Array.isArray(properties) && properties.length > 0 ? (
-          <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {properties.map((property) => (
-              <Link to={`/property/${property._id}`} key={property._id}>
-                <div className="relative flex flex-col h-full  rounded-lg transition duration-300">
-                  {/* Image Section */}
-                  <div className="relative overflow-hidden rounded-xl h-[300px] sm:h-[250px] md:h-[280px] lg:h-[300px]">
-                    {/* Heart Button */}
-                    {/* <button className="absolute top-3 right-3 z-10 bg-white/80 p-2 rounded-full shadow hover:bg-white">
-                    <CiHeart />
-
-                    </button> */}
-
-                    {/* Image */}
-                    <img
-                      src={
-                        property.images?.[0] ||
-                        "https://via.placeholder.com/300x200"
-                      }
-                      alt={property.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  {/* Content Section */}
-                  <div className="py-2">
-                    <div className="flex items-center mb-1">
-                      <h6 className="text-slate-800 text-sm sm:text-base font-semibold truncate max-w-[80%]">
-                        {property.title}
-                      </h6>
-                      <div className="flex items-center ml-auto text-yellow-500 text-xs sm:text-sm">
-                        <span className="ml-1.5 font-medium text-slate-600">
-                          ⭐ 4.8
-                        </span>
-                      </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[...properties]
+              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+              .map((property) => (
+                <Link to={`/property/${property._id}`} key={property._id}>
+                  <div className="relative flex flex-col h-full rounded-lg transition duration-300">
+                    {/* Image Section */}
+                    <div className="relative overflow-hidden rounded-xl h-[300px] sm:h-[250px] md:h-[280px] lg:h-[300px]">
+                      <img
+                        src={
+                          property.images?.[0] ||
+                          "https://via.placeholder.com/300x200"
+                        }
+                        alt={property.title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
 
-                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-light line-clamp-2">
-                      {property.description}
-                    </p>
+                    {/* Content Section */}
+                    <div className="py-2">
+                      <div className="flex items-center mb-1">
+                        <h6 className="text-slate-800 text-sm sm:text-base font-semibold truncate max-w-[80%]">
+                          {property.title}
+                        </h6>
+                        <div className="flex items-center ml-auto text-yellow-500 text-xs sm:text-sm">
+                          <span className="ml-1.5 font-medium text-slate-600">
+                            ⭐ 4.8
+                          </span>
+                        </div>
+                      </div>
 
-                    <p className="mt-2 text-sm sm:text-base font-semibold text-gray-800">
-                      ₹{property.price.toLocaleString("en-IN")}
-                    </p>
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-light line-clamp-2">
+                        {property.description}
+                      </p>
+
+                      <p className="mt-2 text-sm sm:text-base font-semibold text-gray-800">
+                        ₹{property.price.toLocaleString("en-IN")}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
           </div>
         ) : (
           <div className="flex flex-wrap justify-center border-gray-100 gap-6 mt-10">
